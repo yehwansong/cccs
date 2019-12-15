@@ -1,6 +1,6 @@
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/hiddenletters/sw-test/sw.js', { scope: '/hiddenletters/sw-test/' }).then(function(reg) {
+  navigator.serviceWorker.register('/cccs/sw.js', { scope: '/cccs/' }).then(function(reg) {
 
     if(reg.installing) {
       console.log('Service worker installing');
