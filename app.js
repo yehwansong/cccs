@@ -29,7 +29,7 @@ $(document).ready(function(){
                     if($('.a_'+i+'.b_'+j).length == 0){
                     var at_image = document.createElement('img');
 
-                    at_image.src = 'gallery/pix.png';
+                    at_image.src = 'gallery/pix-cache.png';
                     at_image.className = 'a_'+i+' b_'+j
                     at_image.style.top  = (100/25)*(i-1) +"%"
                     at_image.style.left = (100/25)*(j-1) +"%"
