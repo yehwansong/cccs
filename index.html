@@ -8,6 +8,10 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="Cache-Control" content="no-store" />
     <script src="jquery.js"></script>
+    <script type="text/javascript">
+        let resourcePath = 'app.js';
+        document.getElementById('app').src = resourcePath + '?v=' + Date.now();    
+    </script>
     <style type="text/css">
     *{
         margin: 0
@@ -145,10 +149,6 @@ window.onload = function() {
     };
     </script>
     <script src id="app"></script>
-    <script type="text/javascript">
-        let resourcePath = 'app.js';
-        document.getElementById('app').src = resourcePath + '?v=' + Date.now();    
-    </script>
     <!-- <script src="app.js"></script> -->
 </body>
 </html>
