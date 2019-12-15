@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<img id="scream" width="unit0" height="unit0" src="s.png" alt="The Scream" >
+<canvas id="myCanvas" width="unit0" height="unit0" style="border:1px solid #d3d3d3;"></canvas>
+
+<button onclick="copy()">Copy</button>
+<div id="output"></div>
+
+<script>
+
+window.onload = function() {
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var img = document.getElementById("scream");
+ctx.drawImage(img, unit0, unit0);
+	function copy() {
+	var imgData = ctx.getImageData(0, 0, unit0, unit0);
+	console.log(imgData)
+	document.getElementById("output").innerHTML = imgData.data;
+	}
+}
+</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	*{
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Chrome */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+
+}
+</style>
+	</head>
+<body>
+
+<p>Image to use:</p>
+<img id="scream" width="30" height="30" src="s.png" alt="The Scream">
+<canvas id="myCanvas" width="30" height="30"></canvas>
+<div id="output_1"></div>
+<div id="output_2"></div>
+
+<script>
+window.onload = function() {
+var data_array = []
+var unit = 15
+var result = new Array(unit); 
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  var img = document.getElementById("scream");
+  ctx.drawImage(img, 0, 0, unit, unit);
+	var imgData = ctx.getImageData(0, 0, unit, unit);
+	for (i = 0; i < imgData.data.length; i += 4) {
+			data_array.push(imgData.data[i])
+					console.log(i)
+		if(i >= imgData.data.length-4){
+			for (var k = 0; k < unit; k++) {
+				result[k] = new Array(unit); 
+				for (var j = 0; j < unit; j++) {
+					result[k][j] = data_array[(k)*unit+(j)]
+					if(j == unit-1 && k == unit-1){
+						make()
+					}
+				}
+			}
+		}
+	}
+	function make(){
+		var final_1  = new Array(unit); 
+		var final_2  = new Array(unit); 
+		var final_3  = new Array(unit); 
+			for (var k = 0; k < unit; k++) {
+				final_1[k] = new Array(unit); 
+				final_2[k] = new Array(unit); 
+				final_3[k] = new Array(unit); 
+				for (var j = 0; j < unit; j++) {
+						final_3[k][j] = "<img src = 'gallery/pix-"+k+"-"+j+".png' class='b_"+k+" a_"+j+"'>"
+					if(result[k][j] < 125){
+						final_1[k][j] = "<img src = 'gallery/pix-"+k+"-"+j+".png' class='b_"+k+" a_"+j+"'>"
+					}else{
+						final_2[k][j] = "{'url': 'gallery/pix-"+k+"-"+j+".png','class' :  'b_"+k+" a_"+j+"'},"
+					}
+				if( k == unit-1 && j ==  unit-1){
+					for (var a = 0; a < unit; a++) {
+						for (var b = 0; b < unit; b++) {
+							if(typeof final_1[a][b] !== 'undefined'){
+							document.getElementById("output_1").innerHTML += final_1[a][b];
+							}else{
+							document.getElementById("output_2").innerHTML += final_2[a][b];
+							}
+						// console.log(JSON.stringify(final_1).replace("null,", ""))
+						}
+					}
+				}
+			}
+		}
+	}
+}
+</script>
+</body>
+</html>
+
+
+
