@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    loading_img()
+            setTimeout(function(){loading_img()}, 500);
     function loading_img(){
         console.log(imageloaded)
         if(typeof imageloaded === 'undefined' || imageloaded == false){
