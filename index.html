@@ -10,8 +10,7 @@
     <script src="jquery.js"></script>
     <script src id="app"></script>
     <script type="text/javascript">
-        let resourcePath = 'ncache.js';
-        document.getElementById('app').src = resourcePath + '?v=' + Date.now();    
+        $.getScript("ncache.js?timestamp=" + new Date().getTime());   
     </script>
     <!-- <script src="ncache.js?v=1576457202575" id="app"></script> -->
     <style type="text/css">
